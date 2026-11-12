@@ -22,18 +22,29 @@ python3 -m http.server 4173 --bind 127.0.0.1
 
 Visit `http://127.0.0.1:4173/`. No installation or compilation is required.
 
-## Publish to GitHub Pages
+## Published GitHub Pages site
 
-1. Create the public GitHub repository `iDorosh/Updraft-Site`.
-2. Commit and push only this website folder to its `main` branch. Do not include the separate iOS project, signing files, or App Store working files.
-3. In the repository, open **Settings → Pages**. Select **Deploy from a branch**, `main`, and `/(root)`, then Save.
-4. Wait for the Pages deployment to finish and verify all three URLs:
-   - Marketing: `https://idorosh.github.io/Updraft-Site/`
-   - Support: `https://idorosh.github.io/Updraft-Site/support.html`
-   - Privacy: `https://idorosh.github.io/Updraft-Site/privacy.html`
-5. Paste the support and privacy URLs into App Store Connect. Publishing this website does not submit the app to Apple.
+Published from the public repository [iDorosh/Updraft-Site](https://github.com/iDorosh/Updraft-Site), using **main → /(root)**:
 
-If the account or repository name changes, update `404.html` and any canonical/social URLs before publishing. Other internal navigation and asset URLs are relative and support GitHub project Pages.
+- Marketing: https://idorosh.github.io/Updraft-Site/
+- App Store Support URL: https://idorosh.github.io/Updraft-Site/support.html
+- App Store Privacy Policy URL: https://idorosh.github.io/Updraft-Site/privacy.html
+
+Verified live on November 11, 2026. The homepage, support page, privacy page, stylesheet, gameplay image, header icon, favicon, and all three pilot SVGs returned HTTP 200 and matched the local source bytes. Desktop and mobile visual checks passed; decorative hero overflow is clipped at the section boundary.
+
+### Updating the site
+
+Edit only this separate website folder, then commit and push to `main`. Existing SSH authentication was used for publication without changing credentials:
+
+```sh
+git add <changed-files>
+git commit -m "Describe the website update"
+git push git@github.com:iDorosh/Updraft-Site.git main
+```
+
+GitHub Pages automatically deploys updates from `main`. Check the repository’s Pages deployment before relying on a newly changed URL. Do not include the separate iOS project, signing files, or App Store working files.
+
+If the account or repository name changes, update the canonical/social URLs and the `/Updraft-Site/` paths in `404.html`. Other internal navigation and asset URLs are relative and support GitHub project Pages. Publishing this website does not submit the app to Apple.
 
 ## After the app is released
 
